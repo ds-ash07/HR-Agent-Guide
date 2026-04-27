@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Interview Bot - Product & Enablement Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --secondary: #06B6D4;
+            --accent: #F59E0B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --dark: #1F2937;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-500: #6B7280;
+            --gray-300: #D1D5DB;
+            --gray-100: #F3F4F6;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 100%);
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #1E1B4B 100%);
+            color: white;
+            padding: 60px 50px;
+            border-radius: 24px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.35);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 45px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 40px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 20px -6px rgba(79, 70, 229, 0.4);
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gray-900);
+            letter-spacing: -0.5px;
+        }
+
+        .section-number {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Pitch Box */
+        .pitch-box {
+            background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+            border-radius: 16px;
+            padding: 35px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .pitch-box p {
+            font-size: 17px;
+            color: var(--gray-700);
+            margin-bottom: 15px;
+        }
+
+        .pitch-box p:last-child {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--gray-500);
+        }
+
+        /* Value Props Grid */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .value-card {
+            background: linear-gradient(180deg, var(--gray-100) 0%, white 100%);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--gray-300);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .value-icon.blue { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
+        .value-icon.green { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
+        .value-icon.purple { background: linear-gradient(135deg, #E9D5FF, #DDD6FE); }
+        .value-icon.orange { background: linear-gradient(135deg, #FED7AA, #FDBA74); }
+
+        .value-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: var(--gray-500);
+            font-size: 14px;
+        }
+
+        /* Feature Cards */
+        .feature-section {
+            margin-bottom: 35px;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .feature-content {
+            padding-left: 50px;
+        }
+
+        .feature-description {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .feature-description strong {
+            color: var(--gray-900);
+        }
+
+        /* Capability List */
+        .capability-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .capability-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid var(--gray-300);
+            font-size: 14px;
+        }
+
+        .capability-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-radius: 12px;
+            padding: 20px 25px;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+            color: var(--gray-700);
+        }
+
+        .highlight-box::before {
+            content: '"';
+            font-size: 40px;
+            color: var(--accent);
+            line-height: 0;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, white 0%, var(--gray-100) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--gray-300);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* Persona Cards */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .persona-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .persona-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .persona-card.recruiter::before { background: var(--primary); }
+        .persona-card.manager::before { background: var(--success); }
+        .persona-card.founder::before { background: var(--accent); }
+        .persona-card.executive::before { background: var(--secondary); }
+
+        .persona-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+
+        .persona-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .persona-pain {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .persona-message {
+            font-size: 14px;
+            color: var(--gray-700);
+            font-style: italic;
+            background: var(--gray-100);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Table Styles */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .comparison-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 14px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--gray-100);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.yes { background: #D1FAE5; color: #065F46; }
+        .badge.partial { background: #FEF3C7; color: #92400E; }
+        .badge.no { background: #FEE2E2; color: #991B1B; }
+
+        /* Roadmap Timeline */
+        .roadmap-list {
+            list-style: none;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .roadmap-list::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            bottom: 5px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 3px;
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 20px 25px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 26px;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .roadmap-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .roadmap-item p {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Quick Reference Box */
+        .quick-ref {
+            background: linear-gradient(135deg, #1E1B4B 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 20px;
+        }
+
+        .quick-ref h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .quick-ref-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .quick-ref-item .label {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Glossary */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .glossary-item {
+            padding: 16px 20px;
+            background: var(--gray-100);
+            border-radius: 10px;
+        }
+
+        .glossary-term {
+            font-weight: 700;
+            color: var(--gray-900);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .glossary-def {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        /* One Pager Section */
+        .one-pager {
+            background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+            border-radius: 16px;
+            padding: 40px;
+            border: 2px dashed var(--primary-light);
+        }
+
+        .one-pager h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .one-pager .subhead {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+            font-size: 15px;
+        }
+
+        .bullet-list li:last-child {
+            border-bottom: none;
+        }
+
+        .bullet-check {
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 8px 20px -6px rgba(79, 70, 229, 0.5);
+        }
+
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; border: 1px solid #eee; }
+            .hero { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <span class="hero-badge">Product & Enablement Guide</span>
+                <h1>HR Interview Bot</h1>
+                <p class="hero-subtitle">End-to-End AI Screening & Autonomous Hiring Intelligence for Modern Organizations</p>
+            </div>
+        </header>
+
+        <!-- Section 1: Product Overview -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div>
+                    <span class="section-number">Section 01</span>
+                    <h2 class="section-title">Product Overview</h2>
+                </div>
+            </div>
+
+            <div class="pitch-box">
+                <p><strong>HR Interview Bot</strong> is an autonomous AI recruiting agent that conducts voice-based interviews, performs deep candidate research, and delivers transparent, criteria-based rankings — eliminating the screening bottleneck while ensuring every candidate receives a consistent, professional evaluation.</p>
+                <p>Unlike basic resume parsers or one-way video tools, our bot conducts live adaptive interviews, cross-references public data, and explains exactly why a candidate scored the way they did.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Core Value Propositions -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">💎</div>
+                <div>
+                    <span class="section-number">Section 02</span>
+                    <h2 class="section-title">Core Value Propositions</h2>
+                </div>
+            </div>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon blue">⏱️</div>
+                    <h3>80% Time Savings</h3>
+                    <p>Automate initial screening rounds, freeing up recruiters to focus on final-stage candidates and strategic hiring decisions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon green">🔍</div>
+                    <h3>Transparent Scoring</h3>
+                    <p>No black-box algorithms. Every score includes a detailed breakdown of technical, communication, and leadership assessments.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon purple">🤖</div>
+                    <h3>Consistent Evaluation</h3>
+                    <p>Every candidate gets the same professional interview experience, eliminating bias and ensuring fair assessment across all applicants.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon orange">📊</div>
+                    <h3>Intelligent Research</h3>
+                    <p>Automated deep-dive across public sources to surface publications, presentations, and mentions beyond the resume.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Feature Deep-Dive -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">⚙️</div>
+                <div>
+                    <span class="section-number">Section 03</span>
+                    <h2 class="section-title">Feature Deep-Dive</h2>
+                </div>
+            </div>
+
+            <!-- Feature 3.1 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.1</span>
+                    <h3 class="feature-title">Intelligent Dashboard & Candidate Management</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> A centralized command center where teams view all candidates, track pipeline status, and take action in real-time.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Real-time pipeline metrics: Total, Pending, Passed, Failed at a glance</li>
+                        <li>Smart filtering by status and role type</li>
+                        <li>Flexible sorting by AI match score or recency</li>
+                        <li>One-click workflows: resend invites, schedule, deep-dive</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Your entire candidate pipeline, visible and actionable in one screen. No more scattered spreadsheets or chasing interview notes."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.2 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.2</span>
+                    <h3 class="feature-title">Transparent AI Ranking & Matching</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> The bot calculates relevance based on specific Job Description and Title, then explains the scoring weightage transparently.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Technical Competency: ~50% weightage</li>
+                        <li>Communication Skills: ~33% (25–50% based on role)</li>
+                        <li>Leadership & Team Bonding: Variable by seniority</li>
+                        <li>Calibrated scoring (75% when JD matched resume exactly)</li>
+                    </ul>
+                    <div class="highlight-box">
+                        No black boxes. Our AI shows exactly how it weighed technical skills, communication, and leadership against your specific job description."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.3 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.3</span>
+                    <h3 class="feature-title">Deep Candidate Research (Internet Intelligence)</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> Automated deep dive across the open web to find publicly accessible references — publications, presentations, conference talks, and more.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Cross-references findings with resume to verify identity</li>
+                        <li>Prioritizes guaranteed sources (GitHub, LinkedIn, portfolios)</li>
+                        <li>Clearly flags verified vs. discovered information</li>
+                        <li>Avoids confusion between same-name candidates</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Know your candidate beyond the resume. Surface public mentions, publications, and presentations cross-checked for accuracy."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.4 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.4</span>
+                    <h3 class="feature-title">Proctoring & Interview Integrity</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> Multi-layer security ensuring the interview represents the real candidate without cheating.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Tab Switching Detection: Auto-terminates after 3+ switches</li>
+                        <li>Camera Detection: Verifies presence throughout</li>
+                        <li>Voice Anomaly Detection: Identifies inconsistencies</li>
+                        <li>Comprehensive integrity scoring</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Interview integrity built in. Auto-termination, camera checks, and voice anomaly detection ensure scores reflect the real candidate."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.5 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.5</span>
+                    <h3 class="feature-title">Interview Experience & Flow</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> Natural, professional interview experience with proper introductions and conversational flow.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Proper self-introduction: "Hello, I'm your AI interviewer today…"</li>
+                        <li>Readiness check before starting questions</li>
+                        <li>Natural voice-based interaction (not robotic forms)</li>
+                        <li>Adaptive questioning based on responses</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Candidates talk to a professional interviewer, not a chatbot. Natural voice interaction that leaves candidates feeling heard."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.6 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.6</span>
+                    <h3 class="feature-title">Flexible Scheduling</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>What it is:</strong> 95% autonomous scheduling with manual override capability for special cases.
+                    </div>
+                    <ul class="capability-list">
+                        <li>Auto-scheduling for standard roles</li>
+                        <li>Manual scheduling links for senior/executive candidates</li>
+                        <li>Multi-channel delivery: Email, WhatsApp, SMS</li>
+                        <li>Configurable link expiry (default: 72 hours)</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Autonomous for volume, human-controlled for VIPs. Bulk interviews on autopilot, manual controls when hiring executives."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3.7 -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <span class="feature-number">3.7</span>
+                    <h3 class="feature-title">Performance & Scale</h3>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-description">
+                        <strong>Current Capacity:</strong> Configured for 50 resumes per cycle, scaling to 100 with active load testing.
+                    </div>
+                    <div class="highlight-box">
+                        Built to scale. From startup hiring sprints to enterprise volume, infrastructure is load-tested with transparent cost structure."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Product Interface -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🖥️</div>
+                <div>
+                    <span class="section-number">Section 04</span>
+                    <h2 class="section-title">Product Interface Overview</h2>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h4 style="font-weight: 700; color: var(--gray-900); margin-bottom: 16px; font-size: 16px;">Dashboard View</h4>
+                    <ul style="list-style: none;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Clean, card-based candidate layout</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Color-coded match scores (green/yellow/red)</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Auto-extracted skill tags</li>
+                        <li style="padding: 10px 0; font-size: 14px;">✦ Status badges with match percentages</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-weight: 700; color: var(--gray-900); margin-bottom: 16px; font-size: 16px;">Candidate Profile View</h4>
+                    <ul style="list-style: none;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Full info: email, phone, experience, education</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Interview score with qualitative explanation</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">✦ Editable interview topics & prompts</li>
+                        <li style="padding: 10px 0; font-size: 14px;">✦ Integrated scheduling & meeting links</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Competitive Differentiation -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🏆</div>
+                <div>
+                    <span class="section-number">Section 05</span>
+                    <h2 class="section-title">Competitive Differentiation</h2>
+                </div>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>HR Interview Bot</th>
+                        <th>Resume Parsers</th>
+                        <th>Video Tools</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Live Adaptive Interviews</strong></td>
+                        <td><span class="badge yes">Yes</span></td>
+                        <td><span class="badge no">No</span></td>
+                        <td><span class="badge partial">One-way only</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transparent Scoring Breakdown</strong></td>
+                        <td><span class="badge yes">Yes</span></td>
+                        <td><span class="badge no">No</span></td>
+                        <td><span class="badge no">No</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deep Web Research</strong></td>
+                        <td><span class="badge yes">Yes</span></td>
+                        <td><span class="badge no">No</span></td>
+                        <td><span class="badge no">No</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interview Proctoring</strong></td>
+                        <td><span class="badge yes">Yes</span></td>
+                        <td><span class="badge no">N/A</span></td>
+                        <td><span class="badge partial">Basic</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voice-Based Interaction</strong></td>
+                        <td><span class="badge yes">Yes</span></td>
+                        <td><span class="badge no">No</span></td>
+                        <td><span class="badge partial">Pre-recorded</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 6: Target Users & Messaging -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">👥</div>
+                <div>
+                    <span class="section-number">Section 06</span>
+                    <h2 class="section-title">Target Users & Messaging</h2>
+                </div>
+            </div>
+
+            <div class="persona-grid">
+                <div class="persona-card recruiter">
+                    <span class="persona-label">User Profile A</span>
+                    <h4 class="persona-name">The Overloaded Recruiter</h4>
+                    <p class="persona-pain"><strong>Challenge:</strong> 200 applicants, 2 days to screen</p>
+                    <p class="persona-message">"Let the bot handle your first round. Review ranked finalists with explained scores — cut screening time by 80%."</p>
+                </div>
+                <div class="persona-card manager">
+                    <span class="persona-label">User Profile B</span>
+                    <h4 class="persona-name">The Skeptical Hiring Manager</h4>
+                    <p class="persona-pain"><strong>Challenge:</strong> Needs to defend AI-assisted hires to leadership</p>
+                    <p class="persona-message">"Every score comes with a transparent breakdown tied to your JD. Technical, communication, leadership — weighted exactly how you defined the role."</p>
+                </div>
+                <div class="persona-card founder">
+                    <span class="persona-label">User Profile C</span>
+                    <h4 class="persona-name">The High-Growth Founder</h4>
+                    <p class="persona-pain"><strong>Challenge:</strong> Hire 10 engineers this month, no HR team</p>
+                    <p class="persona-message">"One dashboard. Bulk invites. Auto-interviews. Ranked results. Hire fast without sacrificing quality or candidate experience."</p>
+                </div>
+                <div class="persona-card executive">
+                    <span class="persona-label">User Profile D</span>
+                    <h4 class="persona-name">The Executive Search Professional</h4>
+                    <p class="persona-pain"><strong>Challenge:</strong> Senior candidates need personalized treatment</p>
+                    <p class="persona-message">"Autonomous for volume, manual scheduling for C-suite. Deep research on every candidate so you walk into the call fully informed."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Key Stats -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📈</div>
+                <div>
+                    <span class="section-number">Section 07</span>
+                    <h2 class="section-title">Key Statistics & Proof Points</h2>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">75%</div>
+                    <div class="stat-label">Calibrated Score<br>(JD-Resume Match)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3+</div>
+                    <div class="stat-label">Tab Switches<br>= Auto-Fail</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">95%</div>
+                    <div class="stat-label">Autonomous<br>Scheduling</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100</div>
+                    <div class="stat-label">Target Resumes<br>Per Cycle</div>
+                </div>
+            </div>
+
+            <div class="quick-ref">
+                <h3>📋 Quick Reference</h3>
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-item">
+                        <div class="label">Proctoring</div>
+                        <div class="value">Auto-fail on &gt;3 tab switches</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="label">Research</div>
+                        <div class="value">Cross-verified with resume URLs</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="label">Scheduling</div>
+                        <div class="value">95% auto / 5% manual override</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="label">Link Expiry</div>
+                        <div class="value">72 hours (configurable)</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="label">AI Model</div>
+                        <div class="value">Gemini 3.1 Pro</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="label">Current Capacity</div>
+                        <div class="value">50 → 100 resumes/cycle</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Glossary -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📖</div>
+                <div>
+                    <span class="section-number">Section 08</span>
+                    <h2 class="section-title">Glossary of Terms</h2>
+                </div>
+            </div>
+
+            <div class="glossary-grid">
+                <div class="glossary-item">
+                    <div class="glossary-term">JD (Job Description)</div>
+                    <div class="glossary-def">The detailed requirements document for an open position</div>
+                </div>
+                <div class="glossary-item">
+                    <div class="glossary-term">Match Score</div>
+                    <div class="glossary-def">AI-calculated percentage fit between candidate and JD</div>
+                </div>
+                <div class="glossary-item">
+                    <div class="glossary-term">Proctoring</div>
+                    <div class="glossary-def">Integrity monitoring during the interview process</div>
+                </div>
+                <div class="glossary-item">
+                    <div class="glossary-term">Deep Research</div>
+                    <div class="glossary-def">Automated web intelligence gathering about candidates</div>
+                </div>
+                <div class="glossary-item">
+                    <div class="glossary-term">Auto-Scheduling</div>
+                    <div class="glossary-def">System-managed interview appointment setting</div>
+                </div>
+                <div class="glossary-item">
+                    <div class="glossary-term">Manual Override</div>
+                    <div class="glossary-def">Human-controlled scheduling for executive positions</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Roadmap -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <div>
+                    <span class="section-number">Section 09</span>
+                    <h2 class="section-title">What's Coming Soon</h2>
+                </div>
+            </div>
+
+            <ul class="roadmap-list">
+                <li class="roadmap-item">
+                    <h4>Work Learning Module</h4>
+                    <p>Implementation pending cost/token analysis — delivery timeline TBD</p>
+                </li>
+                <li class="roadmap-item">
+                    <h4>Coach Agent Suite</h4>
+                    <p>Separate product line including Interview Prep Coach, Client Coach, Negotiation Coach, Sales Coach, and Executive Coach (psychologist-style multi-session coaching)</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 10: One-Pager -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📄</div>
+                <div>
+                    <span class="section-number">Section 10</span>
+                    <h2 class="section-title">One-Pager Summary</h2>
+                </div>
+            </div>
+
+            <div class="one-pager">
+                <h3>Hire Smarter, Not Harder</h3>
+                <p class="subhead">Autonomous AI Interviews with Transparent Scoring — The HR Interview Bot conducts voice interviews, researches candidates across the web, and ranks them against your exact job criteria while you focus on the finalists.</p>
+
+                <ul class="bullet-list">
+                    <li>
+                        <span class="bullet-check">✓</span>
+                        <span><strong>Autonomous Voice Interviews</strong> — 24/7 screening with natural conversation flow</span>
+                    </li>
+                    <li>
+                        <span class="bullet-check">✓</span>
+                        <span><strong>Transparent AI Ranking</strong> — Scores explained by technical, communication, and leadership criteria</span>
+                    </li>
+                    <li>
+                        <span class="bullet-check">✓</span>
+                        <span><strong>Internet Deep Research</strong> — Public mentions, publications, and profiles cross-checked for accuracy</span>
+                    </li>
+                    <li>
+                        <span class="bullet-check">✓</span>
+                        <span><strong>Built-In Proctoring</strong> — Tab-switching limits, camera checks, and voice anomaly detection</span>
+                    </li>
+                    <li>
+                        <span class="bullet-check">✓</span>
+                        <span><strong>Flexible Scheduling</strong> — Auto-invite for volume roles, manual links for executive candidates</span>
+                    </li>
+                </ul>
+
+                <a href="#" class="cta-button">See Your Candidate Pipeline in a Whole New Way →</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">HR Interview Bot</div>
+            <p>Product & Enablement Guide — Organization-Wide Reference Document</p>
+            <p style="margin-top: 8px; opacity: 0.7;">Source: Product Documentation & Platform Interface (April 2026)</p>
+        </footer>
+    </div>
+</body>
+</html>
